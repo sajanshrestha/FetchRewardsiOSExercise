@@ -8,7 +8,7 @@
 import UIKit
 
 class EventsDisplayer {
-
+    
     var displayedEvents = [Event]() {
         didSet {
             isLoadingEvents = false
@@ -23,9 +23,12 @@ class EventsDisplayer {
     init() {
         eventsClient = EventsClient()
         eventsClient.fetchEvents { events in
+            self.fetchedEvents = events
             self.displayedEvents = events
         }
     }
+    
+    private var fetchedEvents = [Event]()
     
     private var eventsClient: EventsClient!
         
@@ -34,6 +37,10 @@ class EventsDisplayer {
         eventsClient.fetchEvents(for: searchText) { events in
             self.displayedEvents = events
         }
+    }
+    
+    func cancelSearch() {
+        displayedEvents = fetchedEvents
     }
     
     // MARK: - Caching

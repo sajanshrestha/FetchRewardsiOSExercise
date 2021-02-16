@@ -14,7 +14,11 @@ class EventsViewController: UIViewController {
     @IBOutlet weak var eventsTable: UITableView!
     var searchController : UISearchController!
     
+    // view model
     var eventsDisplayer = EventsDisplayer()
+    
+    // instance of timer to throttle the search
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +41,11 @@ extension EventsViewController {
     }
     
     private func configureSearchController() {
-        self.searchController = UISearchController(searchResultsController:  nil)
+        self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.configureTextField()
         self.searchController.searchBar.delegate = self
         self.searchController.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = true
     }
     
     private func configureNavigationBar() {
@@ -143,9 +148,16 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
 extension EventsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchedText = searchBar.text, !searchedText.isEmpty {
-            eventsDisplayer.displayEvents(for: searchedText)
+        if let searchedText = searchBar.text {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+                self.eventsDisplayer.displayEvents(for: searchedText)
+            })
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        eventsDisplayer.cancelSearch()
     }
 }
 
