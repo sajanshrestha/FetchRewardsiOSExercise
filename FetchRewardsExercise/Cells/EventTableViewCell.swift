@@ -13,6 +13,7 @@ class EventTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         addSubviews()
     }
     
@@ -39,24 +40,21 @@ class EventTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         var label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        label.titled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     var locationLabel: UILabel = {
         var label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
-        label.textColor = UIColor.gray
+        label.subTitled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     var dateLabel: UILabel = {
         var label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .semibold)
-        label.textColor = UIColor.gray
+        label.subTitled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -121,7 +119,7 @@ extension EventTableViewCell {
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 8),
+            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 4),
             dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
         ])
     }

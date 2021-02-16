@@ -9,28 +9,39 @@ import UIKit
 
 class EventsDisplayer {
 
-    var events = [Event]() {
+    var displayedEvents = [Event]() {
         didSet {
+            isLoadingEvents = false
             delegate?.didSetEvents()
         }
     }
+    
+    var isLoadingEvents = true
     
     var delegate: EventsDisplayerDelegate?
     
     init() {
         eventsClient = EventsClient()
         eventsClient.fetchEvents { events in
-            self.events = events
+            self.displayedEvents = events
         }
     }
     
     private var eventsClient: EventsClient!
+        
+    func displayEvents(for searchText: String) {
+        isLoadingEvents = true
+        eventsClient.fetchEvents(for: searchText) { events in
+            self.displayedEvents = events
+        }
+    }
     
+    // MARK: - Caching
     func cachedEventImage(for string: String) -> UIImage? {
         cachedEventImages[string]
     }
     
-    func cacheAvatarImage(_ image: UIImage, key: String) {
+    func cacheEventImage(_ image: UIImage, key: String) {
         cachedEventImages[key] = image
     }
     

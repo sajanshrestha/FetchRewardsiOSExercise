@@ -28,7 +28,7 @@ struct Event: Codable {
         case id
         case title
         case venue
-        case date = "datetime_utc"
+        case date = "datetime_local"
         case performers
     }
 }

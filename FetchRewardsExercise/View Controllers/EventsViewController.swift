@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class EventsViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var eventsTable: UITableView!
+    var searchController : UISearchController!
     
     var eventsDisplayer = EventsDisplayer()
-    var searchController : UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initialUISetup()
+        
+        eventsDisplayer.delegate = self
+        
+        updateUIwithLoadingStatus()
+    }
+}
+
+// MARK: - Initial UI Set up
+extension EventsViewController {
+    
+    private func initialUISetup() {
         configureTable()
         configureSearchController()
-        
+        configureNavigationBar()
+    }
+    
+    private func configureSearchController() {
+        self.searchController = UISearchController(searchResultsController:  nil)
+        self.searchController.configureTextField()
+        self.searchController.searchBar.delegate = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+    }
+    
+    private func configureNavigationBar() {
         self.navigationItem.titleView = searchController.searchBar
-
-        eventsDisplayer.delegate = self
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1705367863, green: 0.2440392971, blue: 0.3120354414, alpha: 1)
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     private func configureTable() {
@@ -39,42 +63,49 @@ class EventsViewController: UIViewController {
         eventsTable.estimatedRowHeight = 200
     }
     
-    private func configureSearchController() {
-        self.searchController = UISearchController(searchResultsController:  nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
+    private func updateUIwithLoadingStatus() {
+        if eventsDisplayer.isLoadingEvents {
+            // show loading indicator
+            SVProgressHUD.show()
+            eventsTable.isHidden = true
+        }
+        else {
+            // show the events
+            SVProgressHUD.dismiss()
+            eventsTable.isHidden = false
+        }
     }
 }
 
-
+// MARK: - TableView delegate and datasource
 extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        eventsDisplayer.events.count
+        eventsDisplayer.displayedEvents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = eventsTable.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier) as! EventTableViewCell
         
-        let event = eventsDisplayer.events[indexPath.row]
+        let event = eventsDisplayer.displayedEvents[indexPath.row]
         
         cell.titleLabel.text = event.title
         cell.locationLabel.text = event.venue.displayLocation
-        cell.dateLabel.text = event.date
+        cell.dateLabel.text = event.date.getFormattedString()
         cell.favoriteImageView.isHidden = event.isFavorite == false
-                
-        cell.eventImageView.image = UIImage(named: "smile")!
+            
+        // placeholder image
+        cell.eventImageView.image = UIImage(named: "logo")!
+        
         setEventImage(for: event, in: cell)
         
         return cell
     }
     
     private func setEventImage(for event: Event, in cell: EventTableViewCell) {
-        // checks if the image is already downloaded and cached
         guard let imageUrl = event.imageUrl else { return }
         
+        // checks if the image is already downloaded and cached
         if let image = eventsDisplayer.cachedEventImage(for: imageUrl) {
             cell.eventImageView.image = image
         }
@@ -93,13 +124,14 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.eventImageView.image = image
             }
             if let image = image {
-                self.eventsDisplayer.cacheAvatarImage(image, key: imageUrl)
+                self.eventsDisplayer.cacheEventImage(image, key: imageUrl)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let event = eventsDisplayer.events[indexPath.row]
+        let event = eventsDisplayer.displayedEvents[indexPath.row]
+        
         let eventDetailViewController = EventDetailViewController(for: event) {
             self.eventsTable.reloadData()
         }
@@ -108,15 +140,19 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension EventsViewController: UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        
+extension EventsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let searchedText = searchBar.text, !searchedText.isEmpty {
+            eventsDisplayer.displayEvents(for: searchedText)
+        }
     }
 }
 
 extension EventsViewController: EventsDisplayerDelegate {
     func didSetEvents() {
         DispatchQueue.main.async {
+            self.updateUIwithLoadingStatus()
             self.eventsTable.reloadData()
         }
     }

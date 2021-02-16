@@ -1,0 +1,6 @@
+framework module Pods_FetchRewardsExercise {
+  umbrella header "Pods-FetchRewardsExercise-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -6,13 +6,25 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    lazy var window: UIWindow? = {
+        return UIApplication.shared.windows.first
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        configureSVProgressIndicator()
+
         return true
+    }
+    
+    private func configureSVProgressIndicator() {
+        SVProgressHUD.setRingRadius(1.0)
+        SVProgressHUD.setForegroundColor(#colorLiteral(red: 0.3076365292, green: 0.3655088544, blue: 0.4252530336, alpha: 1))
     }
 
     // MARK: UISceneSession Lifecycle

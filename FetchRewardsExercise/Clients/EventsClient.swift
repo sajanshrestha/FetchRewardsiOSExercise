@@ -9,16 +9,12 @@ import Foundation
 
 struct EventsClient {
   
-    func fetchEvents(completion: @escaping ([Event]) -> Void) {
+    func fetchEvents(for query: String? = nil, completion: @escaping ([Event]) -> Void) {
         
-        var urlComponents = URLComponents(string: SeatGeek.baseUrl)
+        guard let urlComponents = urlComponents(for: query) else { return }
         
-        let clientIdQuery = URLQueryItem(name: SeatGeek.clientId.key, value: SeatGeek.clientId.value)
-        let secretIdQuery = URLQueryItem(name: SeatGeek.clientSecret.key, value: SeatGeek.clientSecret.value)
-        urlComponents?.queryItems = [clientIdQuery, secretIdQuery]
-        
-        guard let url = urlComponents?.url else { return }
-        
+        guard let url = urlComponents.url else { return }
+                
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -31,5 +27,23 @@ struct EventsClient {
             }
             
         }.resume()
+    }
+    
+    private func urlComponents(for query: String?) -> URLComponents? {
+        
+        var urlComponents = URLComponents(string: SeatGeek.baseUrl)
+        var queryItems = [URLQueryItem]()
+        
+        if let query = query {
+            let searchQuery = URLQueryItem(name: SeatGeek.queryKey, value: query)
+            queryItems.append(searchQuery)
+        }
+        
+        let clientIdQuery = URLQueryItem(name: SeatGeek.clientId.key, value: SeatGeek.clientId.value)
+        let secretIdQuery = URLQueryItem(name: SeatGeek.clientSecret.key, value: SeatGeek.clientSecret.value)
+        queryItems.append(contentsOf: [clientIdQuery, secretIdQuery])
+        
+        urlComponents?.queryItems = queryItems
+        return urlComponents
     }
 }

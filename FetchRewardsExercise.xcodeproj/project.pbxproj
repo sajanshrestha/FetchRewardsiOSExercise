@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9179A6080A03E70379F16583 /* Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B05DA4484A528A2A5213B22 /* Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework */; };
+		948484A42544E2FB6999AD08 /* Pods_FetchRewardsExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492E5429B593FD78F635DEA3 /* Pods_FetchRewardsExerciseTests.framework */; };
 		A1429EE025DB063C005DDF41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1429EDF25DB063C005DDF41 /* AppDelegate.swift */; };
 		A1429EE225DB063C005DDF41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1429EE125DB063C005DDF41 /* SceneDelegate.swift */; };
 		A1429EE725DB063C005DDF41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1429EE525DB063C005DDF41 /* Main.storyboard */; };
@@ -22,7 +24,11 @@
 		A1429F3625DB0700005DDF41 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1429F3425DB0700005DDF41 /* EventDetailViewController.swift */; };
 		A1429F3F25DB115F005DDF41 /* Extension + UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1429F3E25DB115F005DDF41 /* Extension + UserDefaults.swift */; };
 		A1429F4A25DB371A005DDF41 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1429F4925DB371A005DDF41 /* ImageDownloader.swift */; };
+		A1AA258925DC452300E2E989 /* Extensions + Button + Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA258825DC452300E2E989 /* Extensions + Button + Label.swift */; };
+		A1AA258E25DC4DE700E2E989 /* Extension + UISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA258D25DC4DE700E2E989 /* Extension + UISearchController.swift */; };
+		A1AA259325DC4DFE00E2E989 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA259225DC4DFE00E2E989 /* Extension + String.swift */; };
 		A1F28AE525DB6C30003B0389 /* SeatGeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F28AE425DB6C30003B0389 /* SeatGeek.swift */; };
+		E1C039E5DA9F1511068D45FA /* Pods_FetchRewardsExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8ACD0B458CE23A0338D5F0 /* Pods_FetchRewardsExercise.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B05DA4484A528A2A5213B22 /* Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F0A18BD36D5759E7E94E6BF /* Pods-FetchRewardsExerciseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExerciseTests.release.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExerciseTests/Pods-FetchRewardsExerciseTests.release.xcconfig"; sourceTree = "<group>"; };
+		330FB6EC328B1A7530A24663 /* Pods-FetchRewardsExercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExercise.debug.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExercise/Pods-FetchRewardsExercise.debug.xcconfig"; sourceTree = "<group>"; };
+		492E5429B593FD78F635DEA3 /* Pods_FetchRewardsExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchRewardsExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6953A4603CFC39D1075F78CE /* Pods-FetchRewardsExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExerciseTests/Pods-FetchRewardsExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1429EDC25DB063C005DDF41 /* FetchRewardsExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRewardsExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1429EDF25DB063C005DDF41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1429EE125DB063C005DDF41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +75,14 @@
 		A1429F3425DB0700005DDF41 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		A1429F3E25DB115F005DDF41 /* Extension + UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UserDefaults.swift"; sourceTree = "<group>"; };
 		A1429F4925DB371A005DDF41 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		A1AA258825DC452300E2E989 /* Extensions + Button + Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + Button + Label.swift"; sourceTree = "<group>"; };
+		A1AA258D25DC4DE700E2E989 /* Extension + UISearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UISearchController.swift"; sourceTree = "<group>"; };
+		A1AA259225DC4DFE00E2E989 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		A1F28AE425DB6C30003B0389 /* SeatGeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeek.swift; sourceTree = "<group>"; };
+		AB8ACD0B458CE23A0338D5F0 /* Pods_FetchRewardsExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchRewardsExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F3297C49C3DC9F3E753CBA /* Pods-FetchRewardsExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExercise.release.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExercise/Pods-FetchRewardsExercise.release.xcconfig"; sourceTree = "<group>"; };
+		B7AA0678F31042875DB1B89B /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D43A81DB6D41FB1B48F4D0A9 /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.release.xcconfig"; path = "Target Support Files/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1C039E5DA9F1511068D45FA /* Pods_FetchRewardsExercise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948484A42544E2FB6999AD08 /* Pods_FetchRewardsExerciseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,12 +106,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9179A6080A03E70379F16583 /* Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061BBEA121689F43B3B4EE93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB8ACD0B458CE23A0338D5F0 /* Pods_FetchRewardsExercise.framework */,
+				2B05DA4484A528A2A5213B22 /* Pods_FetchRewardsExercise_FetchRewardsExerciseUITests.framework */,
+				492E5429B593FD78F635DEA3 /* Pods_FetchRewardsExerciseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C82E5DCF81ECBAFD3DA5812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				330FB6EC328B1A7530A24663 /* Pods-FetchRewardsExercise.debug.xcconfig */,
+				B2F3297C49C3DC9F3E753CBA /* Pods-FetchRewardsExercise.release.xcconfig */,
+				B7AA0678F31042875DB1B89B /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.debug.xcconfig */,
+				D43A81DB6D41FB1B48F4D0A9 /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.release.xcconfig */,
+				6953A4603CFC39D1075F78CE /* Pods-FetchRewardsExerciseTests.debug.xcconfig */,
+				2F0A18BD36D5759E7E94E6BF /* Pods-FetchRewardsExerciseTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A1429ED325DB063C005DDF41 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +143,8 @@
 				A1429EF525DB063D005DDF41 /* FetchRewardsExerciseTests */,
 				A1429F0025DB063D005DDF41 /* FetchRewardsExerciseUITests */,
 				A1429EDD25DB063C005DDF41 /* Products */,
+				2C82E5DCF81ECBAFD3DA5812 /* Pods */,
+				061BBEA121689F43B3B4EE93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +239,9 @@
 			isa = PBXGroup;
 			children = (
 				A1429F3E25DB115F005DDF41 /* Extension + UserDefaults.swift */,
+				A1AA258825DC452300E2E989 /* Extensions + Button + Label.swift */,
+				A1AA258D25DC4DE700E2E989 /* Extension + UISearchController.swift */,
+				A1AA259225DC4DFE00E2E989 /* Extension + String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,9 +264,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1429F0625DB063D005DDF41 /* Build configuration list for PBXNativeTarget "FetchRewardsExercise" */;
 			buildPhases = (
+				28BB32B66DF8BC6EAA9B238C /* [CP] Check Pods Manifest.lock */,
 				A1429ED825DB063C005DDF41 /* Sources */,
 				A1429ED925DB063C005DDF41 /* Frameworks */,
 				A1429EDA25DB063C005DDF41 /* Resources */,
+				3E029110DBFBA7BD35A292DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +283,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1429F0925DB063D005DDF41 /* Build configuration list for PBXNativeTarget "FetchRewardsExerciseTests" */;
 			buildPhases = (
+				90C22B08951493E2D1662D96 /* [CP] Check Pods Manifest.lock */,
 				A1429EEE25DB063D005DDF41 /* Sources */,
 				A1429EEF25DB063D005DDF41 /* Frameworks */,
 				A1429EF025DB063D005DDF41 /* Resources */,
@@ -250,9 +302,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1429F0C25DB063D005DDF41 /* Build configuration list for PBXNativeTarget "FetchRewardsExerciseUITests" */;
 			buildPhases = (
+				3D772F082A76621E344300AE /* [CP] Check Pods Manifest.lock */,
 				A1429EF925DB063D005DDF41 /* Sources */,
 				A1429EFA25DB063D005DDF41 /* Frameworks */,
 				A1429EFB25DB063D005DDF41 /* Resources */,
+				003D4FC534685556A7E32D20 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,19 +387,125 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		003D4FC534685556A7E32D20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28BB32B66DF8BC6EAA9B238C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FetchRewardsExercise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D772F082A76621E344300AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FetchRewardsExercise-FetchRewardsExerciseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E029110DBFBA7BD35A292DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise/Pods-FetchRewardsExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise/Pods-FetchRewardsExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FetchRewardsExercise/Pods-FetchRewardsExercise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90C22B08951493E2D1662D96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FetchRewardsExerciseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1429ED825DB063C005DDF41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1AA259325DC4DFE00E2E989 /* Extension + String.swift in Sources */,
 				A1429F1725DB06D5005DDF41 /* EventTableViewCell.swift in Sources */,
 				A1429F3525DB0700005DDF41 /* EventsViewController.swift in Sources */,
+				A1AA258925DC452300E2E989 /* Extensions + Button + Label.swift in Sources */,
 				A1F28AE525DB6C30003B0389 /* SeatGeek.swift in Sources */,
 				A1429F2B25DB06E9005DDF41 /* EventsDisplayer.swift in Sources */,
 				A1429F3625DB0700005DDF41 /* EventDetailViewController.swift in Sources */,
 				A1429F2325DB06E3005DDF41 /* EventsClient.swift in Sources */,
 				A1429EE025DB063C005DDF41 /* AppDelegate.swift in Sources */,
 				A1429F4A25DB371A005DDF41 /* ImageDownloader.swift in Sources */,
+				A1AA258E25DC4DE700E2E989 /* Extension + UISearchController.swift in Sources */,
 				A1429EE225DB063C005DDF41 /* SceneDelegate.swift in Sources */,
 				A1429F1D25DB06DB005DDF41 /* Event.swift in Sources */,
 				A1429F3F25DB115F005DDF41 /* Extension + UserDefaults.swift in Sources */,
@@ -521,6 +681,7 @@
 		};
 		A1429F0725DB063D005DDF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 330FB6EC328B1A7530A24663 /* Pods-FetchRewardsExercise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -541,6 +702,7 @@
 		};
 		A1429F0825DB063D005DDF41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2F3297C49C3DC9F3E753CBA /* Pods-FetchRewardsExercise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -561,6 +723,7 @@
 		};
 		A1429F0A25DB063D005DDF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6953A4603CFC39D1075F78CE /* Pods-FetchRewardsExerciseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -583,6 +746,7 @@
 		};
 		A1429F0B25DB063D005DDF41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F0A18BD36D5759E7E94E6BF /* Pods-FetchRewardsExerciseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -605,6 +769,7 @@
 		};
 		A1429F0D25DB063D005DDF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7AA0678F31042875DB1B89B /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -625,6 +790,7 @@
 		};
 		A1429F0E25DB063D005DDF41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D43A81DB6D41FB1B48F4D0A9 /* Pods-FetchRewardsExercise-FetchRewardsExerciseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

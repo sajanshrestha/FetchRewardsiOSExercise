@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_FetchRewardsExercise_FetchRewardsExerciseUITests : NSObject
+@end
+@implementation PodsDummy_Pods_FetchRewardsExercise_FetchRewardsExerciseUITests
+@end

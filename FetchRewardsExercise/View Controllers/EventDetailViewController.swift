@@ -12,9 +12,9 @@ class EventDetailViewController: UIViewController {
     var event: Event
     var favButtonClicked: () -> Void
     
-    init(for event: Event, buttonClicked: @escaping () -> Void) {
+    init(for event: Event, favButtonClicked: @escaping () -> Void) {
         self.event = event
-        self.favButtonClicked = buttonClicked
+        self.favButtonClicked = favButtonClicked
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,38 +26,26 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        
         addSubviews()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: - Views
     var imageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.layer.cornerRadius = 20.0
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    var backButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("Back", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     lazy var favoriteButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "heart"), for: .normal)
         button.layer.opacity = event.isFavorite ? 1.0 : 0.5
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = event.isFavorite ? 0.6 : 0.0
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 2
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -65,8 +53,7 @@ class EventDetailViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.text = event.title
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        label.titled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -74,21 +61,21 @@ class EventDetailViewController: UIViewController {
     lazy var locationLabel: UILabel = {
         var label = UILabel()
         label.text = event.venue.displayLocation
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .light)
+        label.subTitled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var dateLabel: UILabel = {
         var label = UILabel()
-        label.text = event.date
-        label.font = UIFont.systemFont(ofSize: 14.0, weight: .light)
+        label.text = event.date.getFormattedString()
+        label.subTitled()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     // MARK: - Constants
-    private let buttonWidth: CGFloat = 40.0
+    private let buttonWidth: CGFloat = 26.0
     private let horizontalSpacing: CGFloat = 16.0
     private let verticalSpacing: CGFloat = 8.0
 }
@@ -97,7 +84,6 @@ extension EventDetailViewController {
     
     private func addSubviews() {
         addImageView()
-        addBackButton()
         addFavoriteButton()
         addFavoriteButtonTarget()
         addTitle()
@@ -110,34 +96,21 @@ extension EventDetailViewController {
                 
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
         
+        addImage()
+    }
+    
+    private func addImage() {
         if let url = URL(string: event.performers.first?.image ?? "") {
             ImageDownloader.downloadImage(with: url) { image in
                 DispatchQueue.main.async {
                     self.imageView.image = image
                 }
             }
-
         }
-    }
-    
-    private func addBackButton() {
-        view.addSubview(backButton)
-        
-        NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalSpacing),
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalSpacing)
-        ])
-        
-        backButton.addTarget(self, action: #selector(handleBackButtonPress), for: .touchUpInside)
-    }
-    
-    @objc func handleBackButtonPress() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func addFavoriteButton() {
@@ -145,7 +118,7 @@ extension EventDetailViewController {
                 
         NSLayoutConstraint.activate([
             favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalSpacing),
-            favoriteButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            favoriteButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: verticalSpacing),
             favoriteButton.widthAnchor.constraint(equalToConstant: buttonWidth),
             favoriteButton.heightAnchor.constraint(equalToConstant: buttonWidth)
         ])
@@ -156,7 +129,6 @@ extension EventDetailViewController {
     }
     
     @objc func favoriteButtonClicked() {
-        
         favButtonClicked()
         toggleOpacity()
         updateFavoriteEventsList()
@@ -164,7 +136,8 @@ extension EventDetailViewController {
     
     private func toggleOpacity() {
         UIView.animate(withDuration: 0.3) {
-            self.favoriteButton.layer.opacity = self.favoriteButton.layer.opacity == 0.5 ? 1 : 0.5
+            self.favoriteButton.layer.opacity = self.favoriteButton.isOn ? 0.5 : 1
+            self.favoriteButton.layer.shadowOpacity = self.favoriteButton.isElevated ? 0.0 : 0.5
         }
     }
     
@@ -183,7 +156,7 @@ extension EventDetailViewController {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalSpacing),
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: verticalSpacing),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalSpacing)
+            titleLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -horizontalSpacing)
         ])
     }
     
@@ -202,15 +175,9 @@ extension EventDetailViewController {
         
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalSpacing),
-            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: verticalSpacing),
+            dateLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 4),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalSpacing)
         ])
     }
 }
 
-
-extension UIButton {
-    var isOn: Bool {
-        self.layer.opacity == 1
-    }
-}
